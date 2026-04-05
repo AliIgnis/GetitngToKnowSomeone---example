@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FadeInDirective } from '../../directives/fade-in.directive';
 import { Question, QuestionDepthLevel } from '../../models/question.interface';
@@ -12,7 +11,7 @@ import {
 @Component({
   selector: 'app-questions',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FadeInDirective],
+  imports: [TranslateModule, FadeInDirective],
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

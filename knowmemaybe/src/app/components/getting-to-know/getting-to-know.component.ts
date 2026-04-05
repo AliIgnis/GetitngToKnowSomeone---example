@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FadeInDirective } from '../../directives/fade-in.directive';
 import { Step } from '../../models/step.interface';
@@ -8,7 +7,7 @@ import { TOTAL_GETTING_TO_KNOW_STEPS } from '../../constants/app.constants';
 @Component({
   selector: 'app-getting-to-know',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FadeInDirective],
+  imports: [TranslateModule, FadeInDirective],
   templateUrl: './getting-to-know.component.html',
   styleUrls: ['./getting-to-know.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
