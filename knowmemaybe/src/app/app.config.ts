@@ -1,28 +1,30 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { provideHttpClient, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslationObject } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DEFAULT_LANGUAGE } from './constants/app.constants';
+import { EN_TRANSLATIONS } from './i18n/en';
+import { DE_TRANSLATIONS } from './i18n/de';
 
-class CustomTranslateLoader implements TranslateLoader {
-  constructor(private http: HttpClient) {}
+const TRANSLATIONS: Record<string, TranslationObject> = {
+  en: EN_TRANSLATIONS as unknown as TranslationObject,
+  de: DE_TRANSLATIONS as unknown as TranslationObject,
+};
 
+class InlineTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<TranslationObject> {
-    return this.http.get<TranslationObject>(`./assets/i18n/${lang}.json`);
+    return of(TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANGUAGE]);
   }
 }
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(),
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: DEFAULT_LANGUAGE,
         loader: {
           provide: TranslateLoader,
-          useFactory: (http: HttpClient) => new CustomTranslateLoader(http),
-          deps: [HttpClient],
+          useClass: InlineTranslateLoader,
         },
       })
     ),
