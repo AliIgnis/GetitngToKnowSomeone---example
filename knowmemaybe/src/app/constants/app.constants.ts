@@ -1,6 +1,6 @@
 // ─── Owner Identity ─────────────────────────────────────────
 export const OWNER_ALIAS = 'Noor Kaneki';
-export const OWNER_EMAIL = 'noori@knowmemaybe.eu';
+export const OWNER_EMAIL = 'Mahnoornavid@outlook.com';
 
 // ─── Site Config ────────────────────────────────────────────
 export const SITE_NAME = 'KnowMeMaybe';
