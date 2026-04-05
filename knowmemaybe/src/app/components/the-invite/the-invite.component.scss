@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+@use '../../../styles/animations';
+
+.invite {
+  background: linear-gradient(180deg, var(--km-bg-alt) 0%, var(--km-primary-light) 100%);
+  @include section-padding;
+  @include theme-transition;
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    @include container;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__headline {
+    @include heading;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__text {
+    @include body-text;
+    color: var(--km-text-secondary);
+    margin-bottom: $spacing-2xl;
+    font-size: $font-size-lg;
+    line-height: 1.8;
+  }
+
+  &__cta-wrapper {
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__cta {
+    @include button-primary;
+  }
+
+  &__cta-subtext {
+    font-size: $font-size-sm;
+    color: var(--km-text-secondary);
+    margin-top: $spacing-md;
+  }
+
+  &__alternative {
+    @include body-text;
+    color: var(--km-text-secondary);
+    font-style: italic;
+  }
+
+  &__hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    @media (prefers-reduced-motion: reduce) {
+      display: none;
+    }
+  }
+
+  &__heart {
+    position: absolute;
+    bottom: -20px;
+    color: var(--km-heart);
+    opacity: 0;
+    animation: floatHeart 6s ease-in infinite;
+
+    &--1 { left: 10%; animation-delay: 0s; font-size: 16px; }
+    &--2 { left: 30%; animation-delay: 1.5s; font-size: 12px; }
+    &--3 { left: 50%; animation-delay: 3s; font-size: 18px; }
+    &--4 { left: 70%; animation-delay: 4.5s; font-size: 14px; }
+    &--5 { left: 90%; animation-delay: 2s; font-size: 10px; }
+  }
+}

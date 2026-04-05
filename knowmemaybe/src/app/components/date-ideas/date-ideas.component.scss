@@ -1,0 +1,72 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.date-ideas {
+  background: var(--km-bg-alt);
+  @include section-padding;
+  @include theme-transition;
+
+  &__container {
+    @include container;
+  }
+
+  &__headline {
+    @include heading;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__intro {
+    @include body-text;
+    text-align: center;
+    color: var(--km-text-secondary);
+    max-width: 700px;
+    margin-inline: auto;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    @include card;
+    padding: $spacing-xl $spacing-lg;
+  }
+
+  &__vibe-tag {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $button-border-radius;
+    color: var(--km-text);
+    margin-bottom: $spacing-md;
+  }
+
+  &__card-title {
+    font-family: $font-family-heading;
+    font-size: $font-size-xl;
+    color: var(--km-accent);
+    font-weight: 700;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__card-text {
+    @include body-text;
+    color: var(--km-text-secondary);
+    font-size: $font-size-sm;
+  }
+}

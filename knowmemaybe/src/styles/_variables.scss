@@ -1,0 +1,87 @@
+// ─── Colors (Light Theme Defaults) ──────────────────────────
+$color-primary: #E8A0BF;
+$color-primary-dark: #D4789B;
+$color-primary-light: #F5D5E5;
+$color-accent: #8B3A62;
+$color-accent-light: #C06E94;
+$color-text-primary: #2C1A25;
+$color-text-secondary: #6B5460;
+$color-background: #FFFBFC;
+$color-background-alt: #FFF0F5;
+$color-white: #FFFFFF;
+$color-border: #F0DDE5;
+$color-heart: #E85A8A;
+$color-step-line: #E8A0BF;
+
+// ─── Typography ─────────────────────────────────────────────
+$font-family-heading: 'Lora', serif;
+$font-family-body: 'Nunito', sans-serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 2rem;
+$font-size-hero: 3rem;
+
+// ─── Spacing Scale (base 4px) ───────────────────────────────
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+$spacing-section: 5rem;
+
+// ─── Breakpoints ────────────────────────────────────────────
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// ─── Layout ─────────────────────────────────────────────────
+$navbar-height: 64px;
+$max-content-width: 960px;
+$card-border-radius: 16px;
+$button-border-radius: 24px;
+
+// ─── CSS Custom Properties (Light Theme) ────────────────────
+:root {
+  --km-bg: #{$color-background};
+  --km-bg-alt: #{$color-background-alt};
+  --km-text: #{$color-text-primary};
+  --km-text-secondary: #{$color-text-secondary};
+  --km-primary: #{$color-primary};
+  --km-primary-dark: #{$color-primary-dark};
+  --km-primary-light: #{$color-primary-light};
+  --km-accent: #{$color-accent};
+  --km-accent-light: #{$color-accent-light};
+  --km-card-bg: #{$color-white};
+  --km-border: #{$color-border};
+  --km-heart: #{$color-heart};
+  --km-shadow: rgba(44, 26, 37, 0.08);
+  --km-navbar-bg: rgba(255, 251, 252, 0.95);
+  --km-step-line: #{$color-step-line};
+}
+
+// ─── CSS Custom Properties (Dark Theme) ─────────────────────
+[data-theme='dark'] {
+  --km-bg: #1A1118;
+  --km-bg-alt: #231A20;
+  --km-text: #F0E6EB;
+  --km-text-secondary: #A89298;
+  --km-primary: #D4789B;
+  --km-primary-dark: #E8A0BF;
+  --km-primary-light: #3D2833;
+  --km-accent: #F0A0C4;
+  --km-accent-light: #D4789B;
+  --km-card-bg: #2A1F25;
+  --km-border: #3D2833;
+  --km-heart: #F06292;
+  --km-shadow: rgba(0, 0, 0, 0.3);
+  --km-navbar-bg: rgba(26, 17, 24, 0.95);
+  --km-step-line: #D4789B;
+}

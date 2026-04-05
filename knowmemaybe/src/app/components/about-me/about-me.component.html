@@ -1,0 +1,15 @@
+<section id="about" class="about">
+  <div class="about__container">
+    <h2 class="about__headline" appFadeIn>{{ 'ABOUT.HEADLINE' | translate }}</h2>
+    <p class="about__intro" appFadeIn>{{ 'ABOUT.INTRO' | translate }}</p>
+    <div class="about__grid">
+      @for (trait of traits; track trait.titleKey) {
+        <article class="about__card" appFadeIn>
+          <span class="about__card-icon" aria-hidden="true">{{ trait.icon }}</span>
+          <h3 class="about__card-title">{{ trait.titleKey | translate }}</h3>
+          <p class="about__card-text">{{ trait.textKey | translate }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

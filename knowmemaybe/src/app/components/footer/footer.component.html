@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="footer__container">
+    <p class="footer__made-with">{{ 'FOOTER.MADE_WITH' | translate }}</p>
+    <p class="footer__tagline">{{ 'FOOTER.TAGLINE' | translate }}</p>
+    <p class="footer__copyright">{{ 'FOOTER.COPYRIGHT' | translate:{ name: ownerAlias } }}</p>
+    <div class="footer__controls">
+      <button
+        class="footer__lang-toggle"
+        (click)="toggleLanguage()"
+        [attr.aria-label]="'Switch to ' + otherLang"
+      >
+        {{ currentLang }} | {{ otherLang }}
+      </button>
+    </div>
+  </div>
+</footer>

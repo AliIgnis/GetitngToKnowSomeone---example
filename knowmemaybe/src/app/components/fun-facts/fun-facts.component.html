@@ -1,0 +1,14 @@
+<section id="fun-facts" class="fun-facts">
+  <div class="fun-facts__container">
+    <h2 class="fun-facts__headline" appFadeIn>{{ 'FUN_FACTS.HEADLINE' | translate }}</h2>
+    <p class="fun-facts__intro" appFadeIn>{{ 'FUN_FACTS.INTRO' | translate }}</p>
+    <div class="fun-facts__grid">
+      @for (fact of facts; track fact.labelKey) {
+        <article class="fun-facts__card" appFadeIn>
+          <span class="fun-facts__card-label">{{ fact.labelKey | translate }}</span>
+          <p class="fun-facts__card-value">{{ fact.valueKey | translate }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

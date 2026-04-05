@@ -1,0 +1,110 @@
+@use 'variables' as *;
+
+// ─── Responsive Breakpoints ─────────────────────────────────
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// ─── Container ──────────────────────────────────────────────
+@mixin container {
+  width: 100%;
+  max-width: $max-content-width;
+  margin-inline: auto;
+  padding-inline: $spacing-md;
+
+  @include respond-to(md) {
+    padding-inline: $spacing-xl;
+  }
+}
+
+// ─── Section Padding ────────────────────────────────────────
+@mixin section-padding {
+  padding-block: $spacing-3xl;
+
+  @include respond-to(md) {
+    padding-block: $spacing-section;
+  }
+}
+
+// ─── Card ───────────────────────────────────────────────────
+@mixin card {
+  background: var(--km-card-bg);
+  border: 1px solid var(--km-border);
+  border-radius: $card-border-radius;
+  padding: $spacing-lg;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--km-shadow);
+    border-color: var(--km-primary);
+  }
+}
+
+// ─── Theme Transition ───────────────────────────────────────
+@mixin theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+// ─── Heading ────────────────────────────────────────────────
+@mixin heading($size: $font-size-3xl) {
+  font-family: $font-family-heading;
+  font-size: $size;
+  color: var(--km-accent);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+// ─── Body Text ──────────────────────────────────────────────
+@mixin body-text {
+  font-family: $font-family-body;
+  font-size: $font-size-base;
+  color: var(--km-text);
+  line-height: 1.7;
+}
+
+// ─── Button ─────────────────────────────────────────────────
+@mixin button-primary {
+  display: inline-block;
+  background: var(--km-accent);
+  color: #FFFFFF;
+  font-family: $font-family-body;
+  font-size: $font-size-lg;
+  font-weight: 700;
+  padding: $spacing-md $spacing-2xl;
+  border: none;
+  border-radius: $button-border-radius;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--km-primary);
+    outline-offset: 2px;
+  }
+}

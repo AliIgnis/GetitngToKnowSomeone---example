@@ -1,0 +1,129 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.questions {
+  background: var(--km-bg);
+  @include section-padding;
+  @include theme-transition;
+
+  &__container {
+    @include container;
+  }
+
+  &__headline {
+    @include heading;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__intro {
+    @include body-text;
+    text-align: center;
+    color: var(--km-text-secondary);
+    max-width: 700px;
+    margin-inline: auto;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-2xl;
+    flex-wrap: wrap;
+  }
+
+  &__tab {
+    font-family: $font-family-body;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    padding: $spacing-sm $spacing-lg;
+    border: 2px solid var(--km-border);
+    border-radius: $button-border-radius;
+    background: transparent;
+    color: var(--km-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    &:hover {
+      border-color: var(--km-primary);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--km-primary);
+      outline-offset: 2px;
+    }
+
+    &--active {
+      border-color: transparent;
+      font-weight: 700;
+    }
+  }
+
+  &__panel {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__level-desc {
+    @include body-text;
+    text-align: center;
+    color: var(--km-text-secondary);
+    margin-bottom: $spacing-xl;
+    font-style: italic;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__card {
+    @include card;
+    position: relative;
+    padding: $spacing-xl $spacing-lg $spacing-lg ($spacing-xl + 0.5rem);
+  }
+
+  &__card-quote {
+    position: absolute;
+    top: $spacing-sm;
+    left: $spacing-md;
+    font-family: $font-family-heading;
+    font-size: 3rem;
+    color: var(--km-primary);
+    opacity: 0.3;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  &__card-text {
+    @include body-text;
+    font-size: $font-size-lg;
+    position: relative;
+  }
+
+  &__closing {
+    @include body-text;
+    text-align: center;
+    font-style: italic;
+    color: var(--km-text-secondary);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: $spacing-2xl;
+  }
+}

@@ -1,0 +1,15 @@
+<section id="why-you" class="why-you">
+  <div class="why-you__container">
+    <h2 class="why-you__headline" appFadeIn>{{ 'WHY_YOU.HEADLINE' | translate }}</h2>
+    <p class="why-you__intro" appFadeIn>{{ 'WHY_YOU.INTRO' | translate }}</p>
+    <div class="why-you__reasons">
+      @for (reason of reasons; track reason; let i = $index) {
+        <p class="why-you__reason" appFadeIn [style.transition-delay.ms]="i * 150">
+          <span class="why-you__reason-bullet" aria-hidden="true">&#10084;</span>
+          {{ reason | translate }}
+        </p>
+      }
+    </div>
+    <p class="why-you__closing" appFadeIn>{{ 'WHY_YOU.CLOSING' | translate }}</p>
+  </div>
+</section>

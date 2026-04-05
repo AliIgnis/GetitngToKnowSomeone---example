@@ -1,0 +1,22 @@
+<section id="hero" class="hero">
+  <div class="hero__content">
+    <h1 class="hero__headline">
+      {{ 'HERO.HEADLINE' | translate:{ name: ownerAlias } }}
+    </h1>
+    <p class="hero__subheadline">
+      {{ 'HERO.SUBHEADLINE' | translate }}
+    </p>
+    <div class="hero__scroll-hint">
+      <span class="hero__scroll-text">{{ 'HERO.SCROLL_HINT' | translate }}</span>
+      <button
+        class="hero__arrow"
+        (click)="scrollToAbout()"
+        [attr.aria-label]="'HERO.ARROW_LABEL' | translate"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

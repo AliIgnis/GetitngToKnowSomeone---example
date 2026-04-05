@@ -1,0 +1,99 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+@use '../../../styles/animations';
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, var(--km-primary-light) 0%, var(--km-bg) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-xl;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, var(--km-primary) 1px, transparent 1px),
+      radial-gradient(circle, var(--km-primary) 0.5px, transparent 0.5px);
+    background-size: 60px 60px, 40px 40px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: $max-content-width;
+    animation: heroEntrance 1s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  &__headline {
+    @include heading($font-size-hero);
+    margin-bottom: $spacing-lg;
+    color: var(--km-accent);
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__subheadline {
+    font-family: $font-family-body;
+    font-size: $font-size-xl;
+    color: var(--km-text-secondary);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: $spacing-3xl;
+    line-height: 1.6;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__scroll-text {
+    font-size: $font-size-sm;
+    color: var(--km-text-secondary);
+    letter-spacing: 0.5px;
+  }
+
+  &__arrow {
+    background: none;
+    border: none;
+    color: var(--km-primary-dark);
+    cursor: pointer;
+    animation: bounceArrow 2s ease-in-out infinite;
+    padding: $spacing-xs;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--km-primary);
+      outline-offset: 2px;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      color: var(--km-accent);
+    }
+  }
+}

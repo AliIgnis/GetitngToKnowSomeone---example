@@ -1,0 +1,25 @@
+<section id="the-invite" class="invite">
+  <div class="invite__container">
+    <h2 class="invite__headline" appFadeIn>{{ 'INVITE.HEADLINE' | translate }}</h2>
+    <p class="invite__text" appFadeIn>{{ 'INVITE.TEXT' | translate }}</p>
+    <div class="invite__cta-wrapper" appFadeIn>
+      <a
+        class="invite__cta"
+        [href]="mailtoLink"
+        [attr.aria-label]="'INVITE.CTA' | translate:{ name: ownerAlias }"
+      >
+        {{ 'INVITE.CTA' | translate:{ name: ownerAlias } }}
+      </a>
+      <p class="invite__cta-subtext">{{ 'INVITE.CTA_SUBTEXT' | translate }}</p>
+    </div>
+    <p class="invite__alternative" appFadeIn>{{ 'INVITE.ALTERNATIVE' | translate }}</p>
+  </div>
+
+  <div class="invite__hearts" aria-hidden="true">
+    <span class="invite__heart invite__heart--1">&#10084;</span>
+    <span class="invite__heart invite__heart--2">&#10084;</span>
+    <span class="invite__heart invite__heart--3">&#10084;</span>
+    <span class="invite__heart invite__heart--4">&#10084;</span>
+    <span class="invite__heart invite__heart--5">&#10084;</span>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<section id="getting-to-know" class="getting-to-know">
+  <div class="getting-to-know__container">
+    <h2 class="getting-to-know__headline" appFadeIn>{{ 'GETTING_TO_KNOW.HEADLINE' | translate }}</h2>
+    <p class="getting-to-know__intro" appFadeIn>{{ 'GETTING_TO_KNOW.INTRO' | translate }}</p>
+
+    <div class="getting-to-know__timeline">
+      @for (step of steps; track step.number; let i = $index; let isOdd = $odd) {
+        <div
+          class="getting-to-know__step"
+          [class.getting-to-know__step--right]="!isOdd"
+          [class.getting-to-know__step--left]="isOdd"
+          appFadeIn
+        >
+          <div class="getting-to-know__step-number" aria-hidden="true">{{ step.number }}</div>
+          <div class="getting-to-know__step-content">
+            <h3 class="getting-to-know__step-title">{{ step.titleKey | translate }}</h3>
+            <p class="getting-to-know__step-text">{{ step.textKey | translate }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <p class="getting-to-know__note" appFadeIn>{{ 'GETTING_TO_KNOW.NOTE' | translate }}</p>
+  </div>
+</section>

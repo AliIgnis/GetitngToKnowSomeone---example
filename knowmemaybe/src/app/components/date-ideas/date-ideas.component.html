@@ -1,0 +1,20 @@
+<section id="date-ideas" class="date-ideas">
+  <div class="date-ideas__container">
+    <h2 class="date-ideas__headline" appFadeIn>{{ 'DATE_IDEAS.HEADLINE' | translate }}</h2>
+    <p class="date-ideas__intro" appFadeIn>{{ 'DATE_IDEAS.INTRO' | translate }}</p>
+    <div class="date-ideas__grid">
+      @for (idea of ideas; track idea.titleKey) {
+        <article class="date-ideas__card" appFadeIn>
+          <span
+            class="date-ideas__vibe-tag"
+            [style.background-color]="idea.vibeColor"
+          >
+            {{ idea.vibeKey | translate }}
+          </span>
+          <h3 class="date-ideas__card-title">{{ idea.titleKey | translate }}</h3>
+          <p class="date-ideas__card-text">{{ idea.textKey | translate }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

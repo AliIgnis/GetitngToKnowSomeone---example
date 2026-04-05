@@ -1,0 +1,129 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.getting-to-know {
+  background: var(--km-bg);
+  @include section-padding;
+  @include theme-transition;
+
+  &__container {
+    @include container;
+  }
+
+  &__headline {
+    @include heading;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__intro {
+    @include body-text;
+    text-align: center;
+    color: var(--km-text-secondary);
+    max-width: 700px;
+    margin-inline: auto;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__timeline {
+    position: relative;
+    max-width: 800px;
+    margin-inline: auto;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--km-step-line);
+      transform: translateX(-50%);
+
+      @media (max-width: $breakpoint-md) {
+        left: 20px;
+      }
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+    position: relative;
+
+    @media (max-width: $breakpoint-md) {
+      padding-left: 52px;
+    }
+
+    &--right {
+      @include respond-to(md) {
+        flex-direction: row;
+        padding-left: calc(50% + #{$spacing-lg});
+      }
+    }
+
+    &--left {
+      @include respond-to(md) {
+        flex-direction: row-reverse;
+        padding-right: calc(50% + #{$spacing-lg});
+        text-align: right;
+      }
+    }
+  }
+
+  &__step-number {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: var(--km-primary);
+    color: var(--km-accent);
+    font-family: $font-family-heading;
+    font-weight: 700;
+    font-size: $font-size-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+
+    @media (max-width: $breakpoint-md) {
+      position: absolute;
+      left: 0;
+    }
+
+    @include respond-to(md) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__step-content {
+    flex: 1;
+  }
+
+  &__step-title {
+    font-family: $font-family-heading;
+    font-size: $font-size-xl;
+    color: var(--km-accent);
+    font-weight: 700;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__step-text {
+    @include body-text;
+    color: var(--km-text-secondary);
+  }
+
+  &__note {
+    @include body-text;
+    text-align: center;
+    font-style: italic;
+    color: var(--km-text-secondary);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-top: $spacing-2xl;
+  }
+}

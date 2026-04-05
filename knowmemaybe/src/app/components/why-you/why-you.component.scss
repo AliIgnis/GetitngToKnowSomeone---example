@@ -1,0 +1,54 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.why-you {
+  background: var(--km-bg-alt);
+  @include section-padding;
+  @include theme-transition;
+
+  &__container {
+    @include container;
+    max-width: 700px;
+    text-align: center;
+  }
+
+  &__headline {
+    @include heading;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__intro {
+    @include body-text;
+    color: var(--km-text-secondary);
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__reasons {
+    text-align: left;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__reason {
+    @include body-text;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-lg;
+    padding-left: $spacing-xl;
+    position: relative;
+  }
+
+  &__reason-bullet {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--km-heart);
+    font-size: $font-size-sm;
+  }
+
+  &__closing {
+    font-family: $font-family-heading;
+    font-size: $font-size-xl;
+    color: var(--km-accent);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+}

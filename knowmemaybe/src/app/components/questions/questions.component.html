@@ -1,0 +1,48 @@
+<section id="questions" class="questions">
+  <div class="questions__container">
+    <h2 class="questions__headline" appFadeIn>{{ 'QUESTIONS.HEADLINE' | translate }}</h2>
+    <p class="questions__intro" appFadeIn>{{ 'QUESTIONS.INTRO' | translate }}</p>
+
+    <div class="questions__tabs" role="tablist" aria-label="Question depth levels" appFadeIn>
+      @for (level of levels; track level; let i = $index) {
+        <button
+          class="questions__tab"
+          [class.questions__tab--active]="activeLevel() === level"
+          [style.background-color]="activeLevel() === level ? depthColors[level].bg : 'transparent'"
+          [style.color]="activeLevel() === level ? depthColors[level].text : 'var(--km-text-secondary)'"
+          role="tab"
+          [attr.aria-selected]="activeLevel() === level"
+          [attr.aria-controls]="'panel-' + level"
+          [tabindex]="activeLevel() === level ? 0 : -1"
+          (click)="setLevel(level)"
+          (keydown)="onTabKeydown($event, i)"
+        >
+          <span aria-hidden="true">{{ levelIcons[level] }}</span>
+          {{ getLevelLabelKey(level) | translate }}
+        </button>
+      }
+    </div>
+
+    @for (level of levels; track level) {
+      <div
+        class="questions__panel"
+        [class.questions__panel--active]="activeLevel() === level"
+        role="tabpanel"
+        [id]="'panel-' + level"
+        [attr.aria-hidden]="activeLevel() !== level"
+      >
+        <p class="questions__level-desc">{{ getLevelDescKey(level) | translate }}</p>
+        <div class="questions__grid">
+          @for (question of questions[level]; track question.textKey) {
+            <article class="questions__card">
+              <span class="questions__card-quote" aria-hidden="true">"</span>
+              <p class="questions__card-text">{{ question.textKey | translate }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    }
+
+    <p class="questions__closing" appFadeIn>{{ 'QUESTIONS.CLOSING' | translate }}</p>
+  </div>
+</section>
