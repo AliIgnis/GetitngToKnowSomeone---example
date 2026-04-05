@@ -1,7 +1,7 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
-import { TranslateHttpLoader, provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideTranslateService } from '@ngx-translate/core';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, LANGUAGE_STORAGE_KEY } from './constants/app.constants';
 
 function detectLanguage(): string {
@@ -20,14 +20,13 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(),
-    provideTranslateService({
-      defaultLanguage: DEFAULT_LANGUAGE,
-      lang: detectLanguage(),
-      loader: provideTranslateLoader(TranslateHttpLoader),
-    }),
     provideTranslateHttpLoader({
       prefix: './assets/i18n/',
       suffix: '.json',
+    }),
+    provideTranslateService({
+      defaultLanguage: DEFAULT_LANGUAGE,
+      lang: detectLanguage(),
     }),
   ],
 };
