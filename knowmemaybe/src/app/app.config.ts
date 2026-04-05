@@ -21,7 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(),
     provideTranslateService({
-      defaultLanguage: detectLanguage(),
+      defaultLanguage: DEFAULT_LANGUAGE,
+      lang: detectLanguage(),
       loader: provideTranslateLoader(TranslateHttpLoader),
     }),
     provideTranslateHttpLoader({
