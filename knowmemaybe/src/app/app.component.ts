@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
@@ -10,6 +11,7 @@ import { FunFactsComponent } from './components/fun-facts/fun-facts.component';
 import { TheInviteComponent } from './components/the-invite/the-invite.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollService } from './services/scroll.service';
+import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, LANGUAGE_STORAGE_KEY } from './constants/app.constants';
 
 @Component({
   selector: 'app-root',
@@ -53,7 +55,12 @@ export class AppComponent implements OnInit, OnDestroy {
     'date-ideas', 'questions', 'fun-facts', 'the-invite',
   ];
 
-  constructor(private scrollService: ScrollService) {}
+  constructor(
+    private scrollService: ScrollService,
+    private translate: TranslateService,
+  ) {
+    this.initLanguage();
+  }
 
   ngOnInit(): void {
     this.scrollService.observeSections(this.sectionIds);
@@ -61,5 +68,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.scrollService.destroy();
+  }
+
+  private initLanguage(): void {
+    this.translate.addLangs([...SUPPORTED_LANGUAGES]);
+    this.translate.setDefaultLang(DEFAULT_LANGUAGE);
+
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored && (SUPPORTED_LANGUAGES as readonly string[]).includes(stored)) {
+      this.translate.use(stored);
+      return;
+    }
+
+    const browserLang = this.translate.getBrowserLang();
+    const lang = browserLang && (SUPPORTED_LANGUAGES as readonly string[]).includes(browserLang)
+      ? browserLang
+      : DEFAULT_LANGUAGE;
+    this.translate.use(lang);
   }
 }
